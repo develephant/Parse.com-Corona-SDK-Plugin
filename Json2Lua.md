@@ -64,3 +64,5 @@ local data_tbl = { color = "Green", dogs = 3 }
 --== Mixing common and unique
 local data_tbl = { score = { ["$gt"] = 200 } }
 ```
+
+Be sure to check out the [__Parse REST API guide__](https://www.parse.com/docs/rest/guide) for more practice examples.

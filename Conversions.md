@@ -2,7 +2,7 @@
 
 ## Conversions
 
-In the Parse.com API guide you will see lots of usage examples. You need to do table conversions on the `data` you will send from Lua. In the examples, the `data` property is the __-d__ flag, followed by some JSON data.
+In the [__Parse REST API guide__](https://www.parse.com/docs/rest/guide) you will see lots of usage examples. You need to do table conversions on the `data` you will send from Lua. In the examples, the `data` property is the __-d__ flag, followed by some JSON data.
 
 ```bash
 # Parse.com example code
