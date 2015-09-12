@@ -1,42 +1,72 @@
-# Welcome
+# Corona SDK Parse Plugin
 
-Welcome to your wiki! This is the default page we've installed for your convenience. Go ahead and edit it.
+## Getting Started
 
-## Wiki features
+Read through the [__Parse REST API guide__](ps://www.parse.com/docs/rest/guide) at Parse.com to learn how to use the API.
 
-This wiki uses the [Markdown](http://daringfireball.net/projects/markdown/) syntax.
+The Parse.com guide provides an example of all the methods available. Following a few rules, all JSON example data can be converted into a Lua table structure. You can also use raw JSON strings in certain methods, if preferable.
 
-The wiki itself is actually a git repository, which means you can clone it, edit it locally/offline, add images or any other file type, and push it back to us. It will be live immediately.
+## JSON to Lua Rules
 
-Go ahead and try:
+JSON "objects" and Lua tables have a similar looking structure, but differ in the following ways:
 
-```
-$ git clone https://develephant@bitbucket.org/develephant/mod_parse_2.git/wiki
-```
+#### General
 
-Wiki pages are normal files, with the .md extension. You can edit them locally, as well as creating new ones.
+Lua uses an equal sign `=` as its setter. JSON uses a colon `:` as its setter. Both use curly braces as "objects":
 
-## Syntax highlighting
-
-
-You can also highlight snippets of text (we use the excellent [Pygments][] library).
-
-[Pygments]: http://pygments.org/
-
-
-Here's an example of some Python code:
-
-```
-#!python
-
-def wiki_rocks(text):
-    formatter = lambda t: "funky"+t
-    return formatter(text)
+```lua
+--Lua
+local tbl_obj = { username = "Jim", age = 23 }
 ```
 
+```javascript
+//JSON (javascript)
+var json_obj = { "username": "Jim", "age": 23 }
+```
 
-You can check out the source of this page to see how that's done, and make sure to bookmark [the vast library of Pygment lexers][lexers], we accept the 'short name' or the 'mimetype' of anything in there.
-[lexers]: http://pygments.org/docs/lexers/
+JSON uses quoted strings as key names. This is optional for Lua in most cases (see Unique Keys).
 
+#### Arrays
 
-Have fun!
+Arrays in JSON are enclosed in brackets:
+
+```javascript
+//JSON (javascript)
+var json_arr = [ 'green', 'blue', 'red' ]
+```
+In __Lua__, use a table array instead:
+
+```lua
+--Lua
+local tbl_arr = { 'green', 'blue', 'red' }
+```
+
+#### Unique Keys
+
+If you have a key with uncommon chars, spaces, etc., you must wrap it with brackets and quotes so that it will be converted to JSON properly from Lua.
+
+```lua
+--== Nope, even though $gt is a valid Parse key.
+local data_tbl = { $gt = 200 }
+
+--== Yes! Wrap the value in brackets and quotes.
+local data_tbl = { ["$gt"] = 200 }
+```
+
+```lua
+--== Nope.
+local data_tbl = { my awesome color = "Green" }
+
+--== Yes!
+local data_tbl = { ["my awesome color"] = "Green" }
+```
+
+__This is not needed for common keys:__
+
+```lua
+--== Using common keys
+local data_tbl = { color = "Green", dogs = 3 }
+
+--== Mixing common and unique
+local data_tbl = { score = { ["$gt"] = 200 } }
+```
