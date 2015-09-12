@@ -51,11 +51,12 @@ curl -X GET \
   ...
   --data-urlencode 'where={"score":{"$gte":1000,"$lte":3000}}' \
   https://api.parse.com/1/classes/GameScore
-  ```
-  From __-data-urlencode__ flag to __Lua__:
-  
-  ```lua
-  local query = { score = { ["$gte"] = 1000, ["$lte"] = 3000 } }
-  ```
-  
-  > You might notice that the `where=` is not part of the query. This parameter is added during request processing.
+```
+
+From __-data-urlencode__ flag to __Lua__:
+
+```lua
+local query = { score = { ["$gte"] = 1000, ["$lte"] = 3000 } }
+```
+
+> You might notice that the `where=` is not part of the query. This parameter is added during request processing.
