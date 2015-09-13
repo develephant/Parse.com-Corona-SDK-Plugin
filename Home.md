@@ -10,8 +10,23 @@ Following a few rules, all JSON example data can be converted into a Lua table s
 
 ## Topics
 
-#### [Rules for Converting Parse JSON to Lua](Json2Lua)
+##### [Parse Plugin - An Overview](Overview)
+##### [Rules for Parse to Lua Conversion](Parse2Lua)
+##### [Parse Plugin - Endpoint Meta](Endpoints)
 
-#### [Parse Conversion Examples](Conversions)
+## API
 
-#### [Parse Plugin - An Overview](Overview)
+#### [Objects](API_Objects)
+#### [Users](API_Users)
+#### [Sessions](API_Sessions)
+#### [Roles](API_Roles)
+#### [Files](API_Files)
+#### [Analytics](API_Analytics)
+#### [Push](API_Push)
+#### [Installations](API_Installations)
+#### [Config](API_Config)
+#### [Cloud](API_Cloud)
+#### [Schemas](API_Schemas)
+#### [Apps](API_Apps)
+#### [Hooks](API_Hooks)
+#### [Triggers](API_Triggers)
